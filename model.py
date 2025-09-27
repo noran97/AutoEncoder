@@ -1,3 +1,4 @@
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -184,3 +185,21 @@ if __name__ == '__main__':
     # You might need to add 'title=None' as a default argument to visualize_batch in data.py
     # if it doesn't support it already.
     train_model()
+=======
+# model.py
+import torch.nn as nn
+
+class Encoder(nn.Module):
+    def __init__(self, latent_dim=64):
+        super(Encoder, self).__init__()
+        self.encoder = nn.Sequential(
+            nn.Flatten(),              # تحويل الصورة إلى vector
+            nn.Linear(28*28, 256),     # طبقة fully connected
+            nn.ReLU(),                 # تفعيل ReLU
+            nn.Linear(256, latent_dim) # إخراج latent vector
+        )
+    
+    def forward(self, x):
+        z = self.encoder(x)
+        return z
+
