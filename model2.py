@@ -116,7 +116,7 @@ def train_vae():
         avg_loss = train_loss / len(train_loader.dataset)
         print(f"Epoch [{epoch}/{EPOCHS}] Loss: {avg_loss:.6f}")
 
-        if epoch % 5 == 0:
+        if epoch % 5 ==== 0:
             model.eval()
             with torch.no_grad():
                 images, _ = next(iter(test_loader))
